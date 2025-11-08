@@ -1,0 +1,98 @@
+.hero {
+  background: linear-gradient(135deg, #e0f2fe 0%, #fff3e0 100%);
+  padding: var(--spacing-2xl) 0;
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: var(--primary-blue);
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-heading);
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font-body);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.stat-box {
+  background: white;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-primary);
+  color: var(--secondary-orange);
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 3px solid var(--primary-blue);
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-orange);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
