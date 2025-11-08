@@ -1,0 +1,103 @@
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 3px solid var(--primary-blue);
+}
+
+.section-title {
+  font-size: 1.75rem;
+  color: var(--primary-blue);
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.event-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-badge {
+  position: relative;
+  top: -15px;
+  left: var(--spacing-md);
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+}
+
+.badge-tech {
+  background-color: var(--tech-color);
+}
+
+.card-content {
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.card-meta {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.card-meta p {
+  margin-bottom: var(--spacing-xs);
+}
+
+.card-spots {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: auto;
+  margin-bottom: var(--spacing-md);
+}
+
+.btn-register {
+  width: 100%;
+  background-color: var(--success-green);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-register:hover {
+  background-color: #059669;
+}
