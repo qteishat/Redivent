@@ -1,5 +1,5 @@
-@import "./base.css";
-@import "./variables.css";
-@import "../styles/components/navigation.css";
-@import "../styles/components/hero.css";
-@import "../styles/components/events.css";
+@import "components/navigation.css";
+@import "components/hero.css";
+@import "components/events.css";
+@import "variables.css";
+@import "base.css";
