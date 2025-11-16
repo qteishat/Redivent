@@ -27,6 +27,21 @@
   color: var(--text-secondary);
 }
 
+.hint {
+  font-size: 1rem;
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.hint p:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  /* justify-content funktioniert hier nicht, das ist für Flexbox */
+}
+
 @media (max-width: 640px) {
   .search-container {
     flex-direction: column;

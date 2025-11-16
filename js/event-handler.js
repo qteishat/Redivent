@@ -25,23 +25,35 @@ function renderEvents(eventsArray, userInput) {
   const eventsGrid = document.querySelector(".events-grid");
   eventsGrid.innerHTML = ""; // Clear old events
 
+  const container = eventsGrid.parentElement;
+
+  const oldHint = container.querySelector(".hint");
+  if (oldHint) {
+    oldHint.remove(); // clear old hints
+  }
+
   const hint = document.createElement("div");
   hint.className = "hint";
 
   // Show message if no events fetched
   if (eventsArray.length === 0 && !userInput) {
-    hint.innerHTML = `<p>Sorry, we're currently experiencing a problem.</p>`;
-    eventsGrid.appendChild(hint);
+    hint.innerHTML = `
+      <div> 
+        <p>Sorry, we're currently experiencing a problem.</p>
+      </div>`;
+    container.insertBefore(hint, eventsGrid);
     return;
   }
 
   // Show message if no events found matching user input
   if (eventsArray.length === 0 && userInput) {
     hint.innerHTML = `
-      <p>No events found matching "${userInput}".</p>
-      <p>Try a different search term or browse all events.</p>
+      <div>
+        <p>No events found matching "${userInput}".</p>
+        <p>Try a different search term or browse all events.</p>
+      </div>
     `;
-    eventsGrid.appendChild(hint);
+    container.insertBefore(hint, eventsGrid);
     return;
   }
 
