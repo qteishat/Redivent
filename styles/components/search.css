@@ -39,7 +39,6 @@
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
-  /* justify-content funktioniert hier nicht, das ist für Flexbox */
 }
 
 @media (max-width: 640px) {
