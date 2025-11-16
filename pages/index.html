@@ -60,6 +60,7 @@
           <h2 class="section-title">Upcoming Events</h2>
         </div>
 
+        <!-- SEARCH BAR -->
         <div class="search-container">
           <input
             id="search-input"
@@ -67,7 +68,21 @@
             type="text"
             placeholder="Search for events by title..."
           />
-          <button>filter</button>
+        </div>
+
+        <!-- FILTER CHIPS -->
+        <div class="filter-container">
+          <button class="filter-chip active" data-category="all">All</button>
+          <button class="filter-chip" data-category="workshop">Tech</button>
+          <button class="filter-chip" data-category="networking">
+            Mentoring
+          </button>
+          <button class="filter-chip" data-category="career">Career</button>
+          <button class="filter-chip" data-category="social">Social</button>
+        </div>
+
+        <div class="events-grid">
+          <!-- events hier -->
         </div>
 
         <div class="events-grid">
