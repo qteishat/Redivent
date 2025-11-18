@@ -24,27 +24,32 @@
   transform: translateY(-2px);
 }
 
-.filter-chip.active {
-  color: white;
-  font-weight: 600;
+#filter-all.active {
+  background-color: var(--primary-blue);
+  color: var(--card-bg);
+  border-color: var(--primary-blue);
 }
 
-.filter-chip[data-category="networking"].active {
-  background-color: var(--badge-networking);
-  border-color: var(--badge-networking);
+#filter-career.active {
+  background-color: var(--career-color);
+  color: var(--card-bg);
+  border-color: var(--career-color);
 }
 
-.filter-chip[data-category="tech"].active {
-  background-color: var(--badge-tech);
-  border-color: var(--badge-tech);
+#filter-tech.active {
+  background-color: var(--tech-color);
+  color: var(--card-bg);
+  border-color: var(--tech-color);
 }
 
-.filter-chip[data-category="social"].active {
-  background-color: var(--badge-social);
+#filter-social.active {
+  background-color: var(--social-color);
+  color: var(--card-bg);
   border-color: var(--badge-social);
 }
 
-.filter-chip[data-category="mentoring"].active {
-  background-color: var(--badge-mentoring);
+#filter-mentorship.active {
+  background-color: var(--mentorship-color);
+  color: var(--card-bg);
   border-color: var(--badge-mentoring);
 }
