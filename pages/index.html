@@ -72,21 +72,45 @@
 
         <!-- FILTER CHIPS -->
         <div class="filter-container">
-          <button class="filter-chip active" data-category="all">All</button>
-          <button class="filter-chip" data-category="workshop">Tech</button>
-          <button class="filter-chip" data-category="networking">
+          <button
+            id="filter-all"
+            class="filter-chip active"
+            onclick="filterByCategory('all')"
+          >
+            All
+          </button>
+          <button
+            id="filter-tech"
+            class="filter-chip"
+            onclick="filterByCategory('tech')"
+          >
+            Tech
+          </button>
+          <button
+            id="filter-mentorship"
+            class="filter-chip"
+            onclick="filterByCategory('mentorship')"
+          >
             Mentoring
           </button>
-          <button class="filter-chip" data-category="career">Career</button>
-          <button class="filter-chip" data-category="social">Social</button>
+          <button
+            id="filter-career"
+            class="filter-chip"
+            onclick="filterByCategory('career')"
+          >
+            Career
+          </button>
+          <button
+            id="filter-social"
+            class="filter-chip"
+            onclick="filterByCategory('social')"
+          >
+            Social
+          </button>
         </div>
 
         <div class="events-grid">
           <!-- events hier -->
-        </div>
-
-        <div class="events-grid">
-          <!-- events will be dynamically inserted here -->
         </div>
       </section>
       <script src="/js/event-handler.js"></script>
