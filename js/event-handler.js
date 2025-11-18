@@ -114,7 +114,26 @@ function renderEventsByTitle(eventsArray, userInput) {
     }
   });
 
-  renderEvents(hits, userInput); // <- userInput mitgeben!
+  renderEvents(hits, userInput);
+}
+
+function filterByCategory(category) {
+  const allChips = document.querySelectorAll(".filter-chip");
+  allChips.forEach((chip) => chip.classList.remove("active"));
+
+  const activeChip = document.getElementById(`filter-${category}`);
+  activeChip.classList.add("active");
+
+  if (category === "all") {
+    renderEvents(eventsArray, "");
+    return;
+  }
+
+  const hits = eventsArray.filter(
+    (event) => event.category.toLowerCase() === category.toLowerCase()
+  );
+
+  renderEvents(hits, "");
 }
 
 // Fetch events when DOM is ready
