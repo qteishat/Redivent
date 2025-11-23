@@ -101,9 +101,9 @@
   margin-bottom: var(--spacing-md);
 }
 
+/* Button Styles */
 .btn-register {
   width: 100%;
-  background-color: var(--success-green);
   color: white;
   padding: 12px;
   border: none;
@@ -111,8 +111,18 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
+  background-color: var(--success-green);
 }
 
 .btn-register:hover {
   background-color: #059669;
+}
+
+/* Registered State (Modifier) */
+.btn-register.registered {
+  background-color: var(--danger-red);
+}
+
+.btn-register.registered:hover {
+  background-color: #dc2626;
 }
