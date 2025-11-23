@@ -88,9 +88,15 @@ function createEventCard(event) {
         <p>${event.location}</p>
       </div>
       <p class="card-spots warning">Only ${event.spotsLeft} spots left!</p>
-      <button class="btn-register" onClick="register(this, ${event.id})">Register</button>
+      <button class="btn-register" data-event-id="${event.id}">Register</button>
     </div>
   `;
+
+  // add event listener
+  const button = eventCard.querySelector(".btn-register");
+  button.addEventListener("click", () => {
+    registerToEvent(button, event.id);
+  });
 
   return eventCard;
 }
