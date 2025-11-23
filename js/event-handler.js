@@ -76,6 +76,11 @@ function createEventCard(event) {
   const eventCard = document.createElement("div");
   eventCard.className = "event-card";
 
+  // Check if event is already registered to set correct button state
+  const isRegistered = myEventsHandler.isEventRegistered(event);
+  const buttonClass = isRegistered ? "btn-register registered" : "btn-register";
+  const buttonText = isRegistered ? "Unregister" : "Register";
+
   eventCard.innerHTML = `
     <span class="card-badge badge-${event.category.toLowerCase()}">
       ${event.category}
@@ -88,14 +93,14 @@ function createEventCard(event) {
         <p>${event.location}</p>
       </div>
       <p class="card-spots warning">Only ${event.spotsLeft} spots left!</p>
-      <button class="btn-register" data-event-id="${event.id}">Register</button>
+      <button class="${buttonClass}" data-event-id="${event.id}">${buttonText}</button>
     </div>
   `;
 
   // add event listener
   const button = eventCard.querySelector(".btn-register");
   button.addEventListener("click", () => {
-    registerToEvent(button, event.id);
+    toggleReservation(button, event.id);
   });
 
   return eventCard;
@@ -126,6 +131,10 @@ function renderEventsByTitle(eventsArray, userInput) {
   renderEvents(hits, userInput);
 }
 
+/**
+ * Filters events by category
+ * @param {String} category - Category to filter by
+ */
 function filterByCategory(category) {
   const allChips = document.querySelectorAll(".filter-chip");
   allChips.forEach((chip) => chip.classList.remove("active"));
@@ -143,47 +152,67 @@ function filterByCategory(category) {
   renderEvents(hits, "");
 }
 
-function registerToEvent(button, eventId) {
+/**
+ * Toggles event registration (register/unregister)
+ * @param {HTMLElement} button - The button that was clicked
+ * @param {Number} eventId - ID of the event
+ */
+function toggleReservation(button, eventId) {
   let clickedEvent = eventsArray.find((event) => event.id == eventId);
 
-  // Checks negative cases first
   if (!clickedEvent) {
     return console.log("Event not found!");
   }
 
   if (myEventsHandler.isEventRegistered(clickedEvent)) {
-    return console.log("Already registered!");
-  }
+    // UNREGISTER
+    let cancelled = myEventsHandler.cancelEvent(clickedEvent);
 
-  if (clickedEvent.spotsLeft <= 0) {
-    return console.log("No spots left!");
-  }
-
-  // Happy Path
-  let registered = myEventsHandler.setMyEvent(clickedEvent);
-  if (registered) {
-    button.classList.add("registered");
-    console.log("You are in!");
+    if (cancelled) {
+      clickedEvent.spotsLeft++;
+      button.classList.remove("registered");
+      button.textContent = "Register";
+      console.log("You are out!");
+    } else {
+      console.log("Something failed during your cancellation.");
+    }
   } else {
-    console.log("Registration failed!");
+    // REGISTER
+    if (clickedEvent.spotsLeft <= 0) {
+      return console.log("No spots left!");
+    }
+
+    let registered = myEventsHandler.setMyEvent(clickedEvent);
+
+    if (registered) {
+      clickedEvent.spotsLeft--;
+      button.classList.add("registered");
+      button.textContent = "Unregister";
+      console.log("You are in!");
+    } else {
+      console.log("Registration failed!");
+    }
   }
 }
 
-// Fetch events when DOM is ready
-document.addEventListener("DOMContentLoaded", fetchEventsFromApi);
+// Initialize when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  fetchEventsFromApi();
 
-// Search functionality
-const searchInput = document.querySelector("#search-input");
-searchInput.addEventListener("input", () => {
-  const userInput = searchInput.value;
-  renderEventsByTitle(eventsArray, userInput);
-});
+  // Search functionality
+  const searchInput = document.querySelector("#search-input");
+  searchInput.addEventListener("input", () => {
+    const userInput = searchInput.value;
+    renderEventsByTitle(eventsArray, userInput);
+  });
 
-const filterButtons = document.querySelectorAll(".filter-chip");
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    // get category from button id
-    const category = button.id.replace("filter-", "");
-    filterByCategory(category);
+  // Filter buttons
+  const filterButtons = document.querySelectorAll(".filter-chip");
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // get category from button id
+      const category = button.id.replace("filter-", "");
+      filterByCategory(category);
+    });
   });
 });
