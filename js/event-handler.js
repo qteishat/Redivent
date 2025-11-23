@@ -169,9 +169,12 @@ function toggleReservation(button, eventId) {
     let cancelled = myEventsHandler.cancelEvent(clickedEvent);
 
     if (cancelled) {
-      clickedEvent.spotsLeft++;
       button.classList.remove("registered");
       button.textContent = "Register";
+
+      const spots = ++clickedEvent.spotsLeft;
+      updateSpotsLeft(button, spots);
+
       console.log("You are out!");
     } else {
       console.log("Something failed during your cancellation.");
@@ -185,14 +188,23 @@ function toggleReservation(button, eventId) {
     let registered = myEventsHandler.setMyEvent(clickedEvent);
 
     if (registered) {
-      clickedEvent.spotsLeft--;
       button.classList.add("registered");
       button.textContent = "Unregister";
+
+      const spots = --clickedEvent.spotsLeft;
+      updateSpotsLeft(button, spots);
+
       console.log("You are in!");
     } else {
       console.log("Registration failed!");
     }
   }
+}
+
+function updateSpotsLeft(button, spotsLeft) {
+  const eventCard = button.closest(".event-card");
+  const spotsElement = eventCard.querySelector(".card-spots");
+  spotsElement.textContent = `Only ${spotsLeft} spots left!`;
 }
 
 // Initialize when DOM is ready
