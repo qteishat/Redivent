@@ -39,9 +39,15 @@
   background: white;
   padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
-  text-align: center;
   box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
   border: 1px solid var(--border-color);
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(255, 107, 53, 0.4), 0 10px 40px rgba(0, 102, 204, 0.3);
+  border-color: var(--secondary-orange);
 }
 
 .stat-number {
@@ -89,10 +95,12 @@
 .btn-primary {
   background-color: var(--accent-color);
   color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
   background-color: var(--secondary-orange);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.5), 0 10px 30px rgba(0, 102, 204, 0.3);
 }
