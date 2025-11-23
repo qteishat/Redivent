@@ -16,9 +16,7 @@
     <!-- NAVIGATION -->
     <nav class="navigation">
       <div class="nav-container">
-        <a href="index.html" class="logo">
-          <span class="logo-redi">ReDI</span><span class="logo-vent">vent</span>
-        </a>
+        <a href="index.html" class="logo"> <span class="logo-redi">ReDI</span><span class="logo-vent">vent</span> </a>
         <ul class="nav-links">
           <li><a href="index.html" class="nav-link active">Home</a></li>
           <li><a href="my-events.html" class="nav-link"> My Events </a></li>
@@ -30,10 +28,7 @@
     <section class="hero">
       <div class="container">
         <h1>Opportunities start here.</h1>
-        <p>
-          Discover workshops and networking events in one place, so you never
-          miss your next opportunity.
-        </p>
+        <p>Discover workshops and networking events in one place, so you never miss your next opportunity.</p>
         <section class="stats">
           <div class="stat-box">
             <div class="stat-number">15</div>
@@ -62,58 +57,23 @@
 
         <!-- SEARCH BAR -->
         <div class="search-container">
-          <input
-            id="search-input"
-            class="search"
-            type="text"
-            placeholder="Search for events by title..."
-          />
+          <input id="search-input" class="search" type="text" placeholder="Search for events by title..." />
         </div>
 
         <!-- FILTER CHIPS -->
         <div class="filter-container">
-          <button
-            id="filter-all"
-            class="filter-chip active"
-            onclick="filterByCategory('all')"
-          >
-            All
-          </button>
-          <button
-            id="filter-tech"
-            class="filter-chip"
-            onclick="filterByCategory('tech')"
-          >
-            Tech
-          </button>
-          <button
-            id="filter-mentorship"
-            class="filter-chip"
-            onclick="filterByCategory('mentorship')"
-          >
-            Mentoring
-          </button>
-          <button
-            id="filter-career"
-            class="filter-chip"
-            onclick="filterByCategory('career')"
-          >
-            Career
-          </button>
-          <button
-            id="filter-social"
-            class="filter-chip"
-            onclick="filterByCategory('social')"
-          >
-            Social
-          </button>
+          <button id="filter-all" class="filter-chip active">All</button>
+          <button id="filter-tech" class="filter-chip">Tech</button>
+          <button id="filter-mentorship" class="filter-chip">Mentoring</button>
+          <button id="filter-career" class="filter-chip">Career</button>
+          <button id="filter-social" class="filter-chip">Social</button>
         </div>
 
         <div class="events-grid">
           <!-- events hier -->
         </div>
       </section>
-      <script src="/js/event-handler.js"></script>
+      <script type="module" src="/js/event-handler.js"></script>
     </main>
   </body>
 </html>

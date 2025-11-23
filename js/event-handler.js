@@ -178,3 +178,12 @@ searchInput.addEventListener("input", () => {
   const userInput = searchInput.value;
   renderEventsByTitle(eventsArray, userInput);
 });
+
+const filterButtons = document.querySelectorAll(".filter-chip");
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    // get category from button id
+    const category = button.id.replace("filter-", "");
+    filterByCategory(category);
+  });
+});
