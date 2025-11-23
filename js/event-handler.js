@@ -1,4 +1,5 @@
 let eventsArray = [];
+const myEventsHandler = new MyEvents();
 
 /**
  * Fetches all events from the mock API.
@@ -85,7 +86,7 @@ function createEventCard(event) {
         <p>${event.location}</p>
       </div>
       <p class="card-spots warning">Only ${event.spotsLeft} spots left!</p>
-      <button class="btn-register">Register Now</button>
+      <button class="btn-register" onClick="register(this, ${event.id})">Register</button>
     </div>
   `;
 
@@ -129,11 +130,33 @@ function filterByCategory(category) {
     return;
   }
 
-  const hits = eventsArray.filter(
-    (event) => event.category.toLowerCase() === category.toLowerCase()
-  );
+  const hits = eventsArray.filter((event) => event.category.toLowerCase() === category.toLowerCase());
 
   renderEvents(hits, "");
+}
+
+function registerToEvent(button, eventId) {
+  let clickedEvent = eventsArray.find((event) => event.id == eventId);
+
+  // check all negative cases
+  if (clickedEvent == undefined) {
+    if (!clickedEvent) return console.log("Event not found!");
+    if (myEventsHandler.isEventRegistered(clickedEvent)) {
+      return console.log("Already registered!");
+    }
+    if (clickedEvent.spotsLeft <= 0) {
+      return console.log("No spots left!");
+    }
+
+    // Happy Path
+    let registered = myEventsHandler.setMyEvent(clickedEvent);
+    if (registered) {
+      button.classList.add("registered");
+      console.log("You are in!");
+    } else {
+      console.log("Registration failed!");
+    }
+  }
 }
 
 // Fetch events when DOM is ready
