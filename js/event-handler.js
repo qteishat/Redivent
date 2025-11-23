@@ -1,3 +1,5 @@
+import { MyEvents } from "./my-event-handler.js";
+
 let eventsArray = [];
 const myEventsHandler = new MyEvents();
 
@@ -138,24 +140,26 @@ function filterByCategory(category) {
 function registerToEvent(button, eventId) {
   let clickedEvent = eventsArray.find((event) => event.id == eventId);
 
-  // check all negative cases
-  if (clickedEvent == undefined) {
-    if (!clickedEvent) return console.log("Event not found!");
-    if (myEventsHandler.isEventRegistered(clickedEvent)) {
-      return console.log("Already registered!");
-    }
-    if (clickedEvent.spotsLeft <= 0) {
-      return console.log("No spots left!");
-    }
+  // Checks negative cases first
+  if (!clickedEvent) {
+    return console.log("Event not found!");
+  }
 
-    // Happy Path
-    let registered = myEventsHandler.setMyEvent(clickedEvent);
-    if (registered) {
-      button.classList.add("registered");
-      console.log("You are in!");
-    } else {
-      console.log("Registration failed!");
-    }
+  if (myEventsHandler.isEventRegistered(clickedEvent)) {
+    return console.log("Already registered!");
+  }
+
+  if (clickedEvent.spotsLeft <= 0) {
+    return console.log("No spots left!");
+  }
+
+  // Happy Path
+  let registered = myEventsHandler.setMyEvent(clickedEvent);
+  if (registered) {
+    button.classList.add("registered");
+    console.log("You are in!");
+  } else {
+    console.log("Registration failed!");
   }
 }
 
