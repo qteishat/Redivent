@@ -1,3 +1,7 @@
+/**
+ * This file is responsible for homepage specific tasks (filter, search...)
+ */
+
 import { fetchEvents } from "./api.js";
 import { Storage } from "./storage.js";
 import { renderEvents, createEventCard, getUpcomingEvent } from "./event-utils.js";
