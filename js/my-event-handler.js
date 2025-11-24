@@ -54,4 +54,44 @@ export class MyEvents {
   clearAllEvents() {
     localStorage.removeItem("myEvents");
   }
+
+  getUpcomingEvent() {
+    let myEvents = this.getMyEvents();
+    let today = new Date();
+
+    // filter for upcoming events
+    let upcomingEvents = myEvents.filter((event) => {
+      let eventDate = new Date(event.date);
+      return eventDate >= today;
+    });
+
+    if (upcomingEvents.length === 0) {
+      console.error("No upcoming event!");
+      return "No";
+    }
+
+    // compare two event dates and return the next event
+    upcomingEvents.sort((a, b) => {
+      let dateA = new Date(a.date);
+      let dateB = new Date(b.date);
+      return dateA - dateB;
+    });
+
+    let upcomingEvent = upcomingEvents[0];
+    let upcomingEventDate = new Date(upcomingEvent.date);
+
+    // Check if event is today
+    if (upcomingEventDate.toDateString() === today.toDateString()) {
+      return "less than 24 hours";
+    }
+
+    let dif = upcomingEventDate - today;
+    // convert form milliseconds to days
+    dif = dif / 1000 / 60 / 60 / 24;
+    // ceil, so events tomorrow are not "0 days"
+    dif = Math.ceil(dif);
+
+    // Singular/Plural handling
+    return dif === 1 ? "1 day" : `${dif} days`;
+  }
 }
