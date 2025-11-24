@@ -13,10 +13,22 @@ function fetchEventsFromApi() {
     .then((data) => {
       eventsArray = data;
       renderEvents(eventsArray, ""); // no user input, when loading events the first time
+      updateStats();
     })
     .catch((error) => {
       console.error("Error fetching events:", error);
     });
+}
+
+function updateStats() {
+  const eventCount = document.getElementById("events-count");
+  eventCount.textContent = eventsArray.length;
+
+  const registrationCount = document.getElementById("registration-count");
+  registrationCount.textContent = myEventsHandler.getMyEvents().length;
+
+  const eventsTicker = document.getElementById("events-ticker");
+  eventsTicker.textContent = myEventsHandler.getUpcomingEvent();
 }
 
 /**
@@ -199,6 +211,7 @@ function toggleReservation(button, eventId) {
       console.log("Registration failed!");
     }
   }
+  updateStats();
 }
 
 function updateSpotsLeft(button, spotsLeft) {
