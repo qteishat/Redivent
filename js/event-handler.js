@@ -28,7 +28,7 @@ function updateStats() {
   registrationCount.textContent = myEventsHandler.getMyEvents().length;
 
   const eventsTicker = document.getElementById("events-ticker");
-  eventsTicker.textContent = myEventsHandler.getUpcomingEvent();
+  eventsTicker.textContent = myEventsHandler.getUpcomingEvent(eventsArray);
 }
 
 /**
@@ -211,7 +211,7 @@ function toggleReservation(button, eventId) {
       console.log("Registration failed!");
     }
   }
-  updateStats();
+  updateStats(eventsArray);
 }
 
 function updateSpotsLeft(button, spotsLeft) {

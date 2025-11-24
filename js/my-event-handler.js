@@ -55,43 +55,34 @@ export class MyEvents {
     localStorage.removeItem("myEvents");
   }
 
-  getUpcomingEvent() {
-    let myEvents = this.getMyEvents();
-    let today = new Date();
+  /**
+   * Calculates days until the next upcoming event
+   * @param {Array} events - Array of all events
+   * @returns {String} - Formatted string like "5 days", "Today", etc.
+   */
+  getUpcomingEvent(events) {
+    const today = new Date();
 
-    // filter for upcoming events
-    let upcomingEvents = myEvents.filter((event) => {
-      let eventDate = new Date(event.date);
-      return eventDate >= today;
-    });
+    // Get upcoming events sorted by date
+    const upcomingEvents = events
+      // filter for future events
+      .filter((event) => new Date(event.date) >= today)
+      // sort dates in ascending order (nearest event first)
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    if (upcomingEvents.length === 0) {
-      console.error("No upcoming event!");
-      return "No";
-    }
+    // No upcoming events found
+    if (upcomingEvents.length === 0) return "Stay tuned";
 
-    // compare two event dates and return the next event
-    upcomingEvents.sort((a, b) => {
-      let dateA = new Date(a.date);
-      let dateB = new Date(b.date);
-      return dateA - dateB;
-    });
-
-    let upcomingEvent = upcomingEvents[0];
-    let upcomingEventDate = new Date(upcomingEvent.date);
+    // Get the nearest event
+    const nextEventDate = new Date(upcomingEvents[0].date);
 
     // Check if event is today
-    if (upcomingEventDate.toDateString() === today.toDateString()) {
-      return "less than 24 hours";
-    }
+    if (nextEventDate.toDateString() === today.toDateString()) return "Today";
 
-    let dif = upcomingEventDate - today;
-    // convert form milliseconds to days
-    dif = dif / 1000 / 60 / 60 / 24;
-    // ceil, so events tomorrow are not "0 days"
-    dif = Math.ceil(dif);
+    // Convert differnce from milliseconds to days and calculate days until event
+    const diffDays = Math.ceil((nextEventDate - today) / (1000 * 60 * 60 * 24));
 
-    // Singular/Plural handling
-    return dif === 1 ? "1 day" : `${dif} days`;
+    // Singular/ Plural handling
+    return diffDays === 1 ? "1 day" : `${diffDays} days`;
   }
 }
