@@ -22,8 +22,17 @@ async function init() {
 /**
  * Wrapper function to render events with callbacks
  */
-function renderEventsToPage(events, userInput) {
-  renderEvents(events, userInput, (event) => {
+export function renderEventsToPage(events, userInput) {
+  if (events.length === 0) {
+    if (!userInput) {
+      showHint("Sorry, we're currently experiencing a problem.");
+    } else {
+      showHint(`No events found matching "${userInput}". Try a different search term or browse all events.`);
+    }
+    return;
+  }
+
+  renderEvents(events, (event) => {
     return createEventCard(
       event,
       (e) => storage.isEventRegistered(e),

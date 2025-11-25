@@ -1,27 +1,13 @@
 /**
  * Renders events to the DOM
  */
-export function renderEvents(events, userInput, createCardCallback) {
+export function renderEvents(events, createCardCallback) {
   const eventsGrid = document.querySelector(".events-grid");
   eventsGrid.innerHTML = "";
 
   const container = eventsGrid.parentElement;
   const oldHint = container.querySelector(".hint");
   if (oldHint) oldHint.remove();
-
-  if (events.length === 0 && !userInput) {
-    showHint(container, eventsGrid, "Sorry, we're currently experiencing a problem.");
-    return;
-  }
-
-  if (events.length === 0 && userInput) {
-    showHint(
-      container,
-      eventsGrid,
-      `No events found matching "${userInput}". Try a different search term or browse all events.`
-    );
-    return;
-  }
 
   events.forEach((event) => {
     const eventCard = createCardCallback(event);
@@ -65,7 +51,14 @@ export function createEventCard(event, isRegisteredCallback, onClickCallback) {
 /**
  * Shows hint message
  */
-function showHint(container, eventsGrid, message) {
+export function showHint(message) {
+  const eventsGrid = document.querySelector(".events-grid");
+  eventsGrid.innerHTML = "";
+
+  const container = eventsGrid.parentElement;
+  const oldHint = container.querySelector(".hint");
+  if (oldHint) oldHint.remove();
+
   const hint = document.createElement("div");
   hint.className = "hint";
   hint.innerHTML = `<div><p>${message}</p></div>`;
