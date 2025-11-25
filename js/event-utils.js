@@ -79,7 +79,7 @@ export function getUpcomingEvent(events) {
 
   // No upcoming events found
   if (upcomingEvents.length === 0) {
-    return ["Stay tuned", ""];
+    return ["Get started", "Register for events on the Home page"];
   }
 
   // save title for My-Events page

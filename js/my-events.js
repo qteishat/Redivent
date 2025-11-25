@@ -25,7 +25,7 @@ function updateStat(events) {
   const [countdownText, titleText] = getUpcomingEvent(events);
 
   countdown.textContent = countdownText;
-  eventTitle.textContent = titleText || "Browse events to get started";
+  eventTitle.textContent = titleText;
 }
 
 function renderMyEventsToPage(events) {
