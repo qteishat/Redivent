@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REDIvent - My Events</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Nunito:wght@400;600&family=Rubik:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <nav class="navigation">
+      <div class="nav-container">
+        <a href="index.html" class="logo"> <span class="logo-redi">ReDI</span><span class="logo-vent">vent</span> </a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="my-events.html" class="nav-link"> My Events </a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container">
+        <h1>Next Event Starts In</h1>
+        <section class="stats">
+          <div class="stat-box">
+            <div class="stat-countdown" id="countdown"></div>
+            <div class="stat-label" id="event-title"></div>
+          </div>
+        </section>
+        <a href="#events-section" class="btn btn-primary">Browse My Events</a>
+      </div>
+    </section>
+
+    <!-- EVENT CARDS -->
+    <main class="container" id="events-section">
+      <section>
+        <div class="section-header">
+          <h2 class="section-title">My Events</h2>
+        </div>
+
+        <div class="events-grid">
+          <!-- events hier -->
+        </div>
+      </section>
+      <script type="module" src="../js/my-events.js" defer></script>
+    </main>
+  </body>
+</html>
