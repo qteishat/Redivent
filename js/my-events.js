@@ -1,6 +1,6 @@
 import { fetchEvents } from "./api.js";
 import { Storage } from "./storage.js";
-import { renderEvents, createEventCard, showHint } from "./event-utils.js";
+import { renderEvents, createEventCard, showHint, getUpcomingEvent } from "./event-utils.js";
 
 const storage = new Storage();
 let myEvents = [];
@@ -15,6 +15,7 @@ async function init() {
   }
 
   renderMyEventsToPage(myEvents);
+  document.getElementById("countdown").textContent = getUpcomingEvent(myEvents);
 }
 
 function renderMyEventsToPage(events) {
@@ -40,6 +41,7 @@ function handleUnregister(button, eventId) {
   else {
     console.log("Sorry, we could not unregister you from this event");
   }
+  init();
 }
 
 document.addEventListener("DOMContentLoaded", init);
