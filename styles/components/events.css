@@ -101,6 +101,10 @@
   margin-bottom: var(--spacing-md);
 }
 
+.warning {
+  color: var(--warning-yellow);
+}
+
 /* Button Styles */
 .btn-register {
   width: 100%;

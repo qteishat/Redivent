@@ -4,7 +4,7 @@
 
 import { fetchEvents } from "./api.js";
 import { Storage } from "./storage.js";
-import { renderEvents, createEventCard, getUpcomingEvent } from "./event-utils.js";
+import { renderEvents, createEventCard, getUpcomingEvent, getSpotsInfo } from "./event-utils.js";
 
 let eventsArray = [];
 const storage = new Storage();
@@ -112,8 +112,10 @@ function handleUnregister(button, event) {
  */
 function updateSpotsLeft(button, spotsLeft) {
   const eventCard = button.closest(".event-card");
+  const spotsInfo = getSpotsInfo(spotsLeft);
   const spotsElement = eventCard.querySelector(".card-spots");
-  spotsElement.textContent = `Only ${spotsLeft} spots left!`;
+  spotsElement.textContent = spotsInfo.text;
+  spotsElement.className = spotsInfo.className;
 }
 
 /**

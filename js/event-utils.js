@@ -26,6 +26,8 @@ export function createEventCard(event, isRegisteredCallback, onClickCallback) {
   const buttonClass = isRegistered ? "btn-register registered" : "btn-register";
   const buttonText = isRegistered ? "Unregister" : "Register";
 
+  const spotsInfo = getSpotsInfo(event.spotsLeft);
+
   eventCard.innerHTML = `
     <span class="card-badge badge-${event.category.toLowerCase()}">
       ${event.category}
@@ -37,7 +39,7 @@ export function createEventCard(event, isRegisteredCallback, onClickCallback) {
         <p>${event.time}</p>
         <p>${event.location}</p>
       </div>
-      <p class="card-spots warning">Only ${event.spotsLeft} spots left!</p>
+      <p class="${spotsInfo.className}">${spotsInfo.text}</p>
       <button class="${buttonClass}" data-event-id="${event.id}">${buttonText}</button>
     </div>
   `;
@@ -46,6 +48,22 @@ export function createEventCard(event, isRegisteredCallback, onClickCallback) {
   button.addEventListener("click", () => onClickCallback(button, event.id));
 
   return eventCard;
+}
+
+/*
+ * Updates CSS class and text content based on the number of left spots
+ */
+export function getSpotsInfo(spotsLeft) {
+  if (spotsLeft < 10) {
+    return {
+      text: `Only ${spotsLeft} spots left!`,
+      className: "card-spots warning",
+    };
+  }
+  return {
+    text: `${spotsLeft} spots available`,
+    className: "card-spots",
+  };
 }
 
 /**
