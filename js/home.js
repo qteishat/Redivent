@@ -47,7 +47,7 @@ export function renderEventsToPage(events, userInput) {
 function updateStats() {
   document.getElementById("events-count").textContent = eventsArray.length;
   document.getElementById("registration-count").textContent = storage.getMyEvents().length;
-  document.getElementById("events-ticker").textContent = getUpcomingEvent(eventsArray);
+  document.getElementById("events-ticker").textContent = getUpcomingEvent(eventsArray)[0];
 }
 
 /**

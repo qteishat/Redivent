@@ -78,17 +78,22 @@ export function getUpcomingEvent(events) {
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   // No upcoming events found
-  if (upcomingEvents.length === 0) return "Stay tuned";
+  if (upcomingEvents.length === 0) {
+    return ["Stay tuned", ""];
+  }
 
-  // Get the nearest event
+  // save title for My-Events page
+  const title = upcomingEvents[0].title;
+  // Get the nearest
   const nextEventDate = new Date(upcomingEvents[0].date);
 
   // Check if event is today
-  if (nextEventDate.toDateString() === today.toDateString()) return "less then 24 hours";
+  if (nextEventDate.toDateString() === today.toDateString()) return ["less than 24 hours", title];
 
   // Convert differnce from milliseconds to days and calculate days until event
   const diffDays = Math.ceil((nextEventDate - today) / (1000 * 60 * 60 * 24));
 
   // Singular/ Plural Handling
-  return diffDays === 1 ? "1 day" : `${diffDays} days`;
+  let dif = diffDays === 1 ? "1 day" : `${diffDays} days`;
+  return [dif, title];
 }

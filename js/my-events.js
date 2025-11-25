@@ -15,7 +15,17 @@ async function init() {
   }
 
   renderMyEventsToPage(myEvents);
-  document.getElementById("countdown").textContent = getUpcomingEvent(myEvents);
+  updateStat(myEvents);
+}
+
+function updateStat(events) {
+  let countdown = document.getElementById("countdown");
+  let eventTitle = document.getElementById("event-title");
+
+  const [countdownText, titleText] = getUpcomingEvent(events);
+
+  countdown.textContent = countdownText;
+  eventTitle.textContent = titleText || "Browse events to get started";
 }
 
 function renderMyEventsToPage(events) {
