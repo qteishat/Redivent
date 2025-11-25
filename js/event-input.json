@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "JavaScript Deep Dive Workshop",
-    "date": "2025-11-15",
+    "date": "2025-12-15",
     "time": "18:00 - 20:00",
     "location": "REDI School Munich, Room 2A",
     "category": "Tech",
@@ -13,7 +13,7 @@
   {
     "id": 2,
     "title": "CV Writing & LinkedIn Optimization",
-    "date": "2025-11-18",
+    "date": "2025-12-18",
     "time": "17:00 - 19:00",
     "location": "Online (Zoom)",
     "category": "Career",
@@ -24,7 +24,7 @@
   {
     "id": 3,
     "title": "Python for Data Analysis",
-    "date": "2025-11-22",
+    "date": "2025-12-22",
     "time": "18:30 - 20:30",
     "location": "REDI School Munich, Room 3B",
     "category": "Tech",
@@ -35,7 +35,7 @@
   {
     "id": 4,
     "title": "Community Networking Night",
-    "date": "2025-11-20",
+    "date": "2025-12-20",
     "time": "19:00 - 21:00",
     "location": "REDI School Café",
     "category": "Social",
@@ -46,7 +46,7 @@
   {
     "id": 5,
     "title": "React Hooks Masterclass",
-    "date": "2025-11-28",
+    "date": "2025-12-28",
     "time": "19:00 - 21:00",
     "location": "REDI School Munich, Room 1A",
     "category": "Tech",
