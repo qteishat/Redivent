@@ -62,7 +62,7 @@
 .stat-label {
   color: var(--text-secondary);
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1.25rem;
 }
 
 .section-header {
