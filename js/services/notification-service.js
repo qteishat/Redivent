@@ -1,7 +1,7 @@
 /**
  * Service for displaying user notifications and hints
  */
-class NotificationService {
+export class NotificationService {
   /**
    * Displays a temporary toast notification in the top-right corner
    * Toast automatically disappears after 3 seconds with a fade-out animation
@@ -41,5 +41,3 @@ class NotificationService {
     container.insertBefore(hint, eventsGrid);
   }
 }
-
-export { NotificationService };
