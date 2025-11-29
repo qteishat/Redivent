@@ -105,17 +105,6 @@ Make sure you have the following installed:
 
 ---
 
-<div align="center">
-
-This is a **student project** for ReDI School Munich.  
-While contributions are not actively sought, **feedback and suggestions are welcome!**
-
-Found a bug? Have an idea? [Open an issue](https://github.com/yourusername/redivent/issues)
-
-</div>
-
----
-
 ## Author
 
 **Rania Qteishat-Stöver**
