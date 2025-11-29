@@ -43,8 +43,9 @@
 
 .nav-link {
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-weight: 500;
+  font-size: 18px;
   font-family: var(--font-heading);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-sm);
