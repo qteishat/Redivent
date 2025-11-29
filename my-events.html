@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REDIvent - Home</title>
+    <title>REDIvent - My Events</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/main.css" />
-    <script type="module" src="../js/views/home.js"></script>
+    <script type="module" src="../js/views/my-events.js" defer></script>
   </head>
   <body>
     <!-- NAVIGATION -->
@@ -28,23 +28,14 @@
     <!-- HERO SECTION -->
     <section class="hero">
       <div class="container">
-        <h1>Opportunities start here.</h1>
-        <p>Discover workshops and networking events in one place, so you never miss your next opportunity.</p>
+        <h1>Your next event</h1>
         <section class="stats">
           <div class="stat-box">
-            <div class="stat-number" id="events-count"></div>
-            <div class="stat-label">Events This Year</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number" id="registration-count"></div>
-            <div class="stat-label">Registrations</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number" id="events-ticker"></div>
-            <div class="stat-label">Until Next Event</div>
+            <div class="stat-number" id="countdown"></div>
+            <div class="stat-label" id="event-title"></div>
           </div>
         </section>
-        <a href="#events-section" class="btn btn-primary">Browse All Events</a>
+        <a href="index.html" class="btn btn-primary">Discover Events</a>
       </div>
     </section>
 
@@ -52,21 +43,7 @@
     <main class="container" id="events-section">
       <section>
         <div class="section-header">
-          <h2 class="section-title">All Events</h2>
-        </div>
-
-        <!-- SEARCH BAR -->
-        <div class="search-container">
-          <input id="search-input" class="search" type="text" placeholder="Search for events by title..." />
-        </div>
-
-        <!-- FILTER CHIPS -->
-        <div class="filter-container">
-          <button id="filter-all" class="filter-chip active">All</button>
-          <button id="filter-tech" class="filter-chip">Tech</button>
-          <button id="filter-mentorship" class="filter-chip">Mentoring</button>
-          <button id="filter-career" class="filter-chip">Career</button>
-          <button id="filter-social" class="filter-chip">Social</button>
+          <h2 class="section-title">My Events</h2>
         </div>
 
         <div class="events-grid">
