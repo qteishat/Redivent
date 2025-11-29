@@ -1,0 +1,55 @@
+.filter-container {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 20px; /* Runde Chips */
+  background-color: var(--card-bg);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+
+#filter-all.active {
+  background-color: var(--primary-blue);
+  color: var(--card-bg);
+  border-color: var(--primary-blue);
+}
+
+#filter-career.active {
+  background-color: var(--career-color);
+  color: var(--card-bg);
+  border-color: var(--career-color);
+}
+
+#filter-tech.active {
+  background-color: var(--tech-color);
+  color: var(--card-bg);
+  border-color: var(--tech-color);
+}
+
+#filter-social.active {
+  background-color: var(--social-color);
+  color: var(--card-bg);
+  border-color: var(--badge-social);
+}
+
+#filter-mentorship.active {
+  background-color: var(--mentorship-color);
+  color: var(--card-bg);
+  border-color: var(--badge-mentoring);
+}
