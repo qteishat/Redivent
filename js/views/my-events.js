@@ -1,7 +1,8 @@
-import { fetchEvents } from "./api.js";
-import { Storage } from "./storage.js";
-import { renderEvents, createEventCard, showHint, getUpcomingEvent } from "./event-utils.js";
-import { NotificationService } from "./notification-service.js";
+import { fetchEvents } from "../api.js";
+import { Storage } from "../services/storage.js";
+import { renderEvents, createEventCard } from "../event-utils/event-renderer.js";
+import { getUpcomingEvent } from "../event-utils/event-utils.js";
+import { NotificationService } from "../services/notification-service.js";
 
 const storage = new Storage();
 const notification = new NotificationService();
@@ -13,7 +14,7 @@ async function init() {
 
   myEvents = allEvents.filter((event) => registeredIds.includes(event.id));
   if (myEvents.length === 0) {
-    showHint("You did not register to any events");
+    notification.showHint("You did not register to any events");
   }
 
   renderMyEventsToPage(myEvents);
@@ -32,7 +33,7 @@ function updateStat(events) {
 
 function renderMyEventsToPage(events) {
   if (events.length === 0) {
-    showHint("You did not register to any events yet.");
+    notification.showHint("You did not register to any events yet.");
     return;
   }
   renderEvents(events, (event) => {

@@ -1,11 +1,11 @@
 /**
  * This file is responsible for homepage specific tasks (filter, search...)
  */
-
-import { fetchEvents } from "./api.js";
-import { Storage } from "./storage.js";
-import { renderEvents, createEventCard, getUpcomingEvent, getSpotsInfo, showHint } from "./event-utils.js";
-import { NotificationService } from "./notification-service.js";
+import { fetchEvents } from "../api.js";
+import { Storage } from "../services/storage.js";
+import { renderEvents, createEventCard } from "../event-utils/event-renderer.js";
+import { getUpcomingEvent, getSpotsInfo, filterByTitle, filterByCategory } from "../event-utils/event-utils.js";
+import { NotificationService } from "../services/notification-service.js";
 
 let eventsArray = [];
 const storage = new Storage();
@@ -24,12 +24,14 @@ async function init() {
 /**
  * Wrapper function to render events with callbacks
  */
-export function renderEventsToPage(events, userInput) {
+function renderEventsToPage(events, userInput) {
   if (events.length === 0) {
     if (!userInput) {
-      showHint("Sorry, we're currently experiencing a problem.");
+      notification.showHint("Sorry, we're currently experiencing a problem.");
     } else {
-      showHint(`No events found matching "${userInput}". Try a different search term or browse all events.`);
+      notification.showHint(
+        `No events found matching "${userInput}". Try a different search term or browse all events.`
+      );
     }
     return;
   }
@@ -123,25 +125,6 @@ function updateSpotsLeft(button, spotsLeft) {
 }
 
 /**
- * Filters events by title
- */
-function filterEventsByTitle(events, searchTerm) {
-  if (!searchTerm) return events;
-
-  const term = searchTerm.toLowerCase();
-  return events.filter((event) => event.title.toLowerCase().includes(term));
-}
-
-/**
- * Filters events by category
- */
-function filterEventsByCategory(category) {
-  if (category === "all") return eventsArray;
-
-  return eventsArray.filter((event) => event.category.toLowerCase() === category.toLowerCase());
-}
-
-/**
  * Handle category filter click
  */
 function handleCategoryFilter(button) {
@@ -149,7 +132,7 @@ function handleCategoryFilter(button) {
   button.classList.add("active");
 
   const category = button.id.replace("filter-", "");
-  const filtered = filterEventsByCategory(category);
+  const filtered = filterByCategory(eventsArray, category); // ✅ Fix: eventsArray hinzugefügt
   renderEventsToPage(filtered, "");
 }
 
@@ -159,7 +142,7 @@ function handleCategoryFilter(button) {
 function setupEventListeners() {
   const searchInput = document.querySelector("#search-input");
   searchInput.addEventListener("input", () => {
-    const filtered = filterEventsByTitle(eventsArray, searchInput.value);
+    const filtered = filterByTitle(eventsArray, searchInput.value);
     renderEventsToPage(filtered, searchInput.value);
   });
 
