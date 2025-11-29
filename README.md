@@ -40,6 +40,12 @@ This minimalistic web application is designed to rganize and display all upcomin
 
 ---
 
+## AI Assistance
+
+Parts of this project were assisted by Claude AI to debug code and generate events.
+
+---
+
 ## Getting Started
 
 ### Prerequisites
