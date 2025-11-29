@@ -1,5 +1,7 @@
-/*
- * Updates CSS class and text content based on the number of left spots
+/**
+ * Determines spots display information based on availability
+ * @param {number} spotsLeft - Number of remaining spots
+ * @returns {{text: string, className: string}} Spots info object
  */
 export function getSpotsInfo(spotsLeft) {
   if (spotsLeft < 10) {
@@ -16,6 +18,8 @@ export function getSpotsInfo(spotsLeft) {
 
 /**
  * Calculates days until the next upcoming event
+ * @param {Event[]} events - Array of event objects
+ * @returns {[string, string]} Tuple of [timeUntil, eventTitle]
  */
 export function getUpcomingEvent(events) {
   const today = new Date();
