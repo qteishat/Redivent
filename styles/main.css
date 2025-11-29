@@ -4,5 +4,6 @@
 @import "components/events.css";
 @import "components/search.css";
 @import "components/filter.css";
+@import "components/notification.css";
 @import "variables.css";
 @import "base.css";

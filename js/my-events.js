@@ -1,8 +1,10 @@
 import { fetchEvents } from "./api.js";
 import { Storage } from "./storage.js";
 import { renderEvents, createEventCard, showHint, getUpcomingEvent } from "./event-utils.js";
+import { NotificationService } from "./notification-service.js";
 
 const storage = new Storage();
+const notification = new NotificationService();
 let myEvents = [];
 
 async function init() {
@@ -47,9 +49,11 @@ function handleUnregister(button, eventId) {
 
   const removed = storage.cancelEvent(event);
 
-  if (removed) button.closest(".event-card").remove();
-  else {
-    console.log("Sorry, we could not unregister you from this event");
+  if (removed) {
+    button.closest(".event-card").remove();
+    notification.showToast("Unregistered successfully", "success");
+  } else {
+    notification.showToast("✗ Cancellation failed. Please try again.", "error");
   }
   init();
 }

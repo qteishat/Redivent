@@ -4,10 +4,12 @@
 
 import { fetchEvents } from "./api.js";
 import { Storage } from "./storage.js";
-import { renderEvents, createEventCard, getUpcomingEvent, getSpotsInfo } from "./event-utils.js";
+import { renderEvents, createEventCard, getUpcomingEvent, getSpotsInfo, showHint } from "./event-utils.js";
+import { NotificationService } from "./notification-service.js";
 
 let eventsArray = [];
 const storage = new Storage();
+const notification = new NotificationService();
 
 /**
  * Init homepage
@@ -75,7 +77,7 @@ function toggleReservation(button, eventId) {
  */
 function handleRegister(button, event) {
   if (event.spotsLeft <= 0) {
-    console.log("No spots left!");
+    notification.showToast("Sorry, this event is fully booked!", "error");
     return;
   }
 
@@ -85,9 +87,10 @@ function handleRegister(button, event) {
     button.textContent = "Unregister";
     event.spotsLeft--;
     updateSpotsLeft(button, event.spotsLeft);
-    console.log("You are in!");
+
+    notification.showToast("You're registered! See you there!", "success");
   } else {
-    console.log("Registration failed!");
+    notification.showToast("Registration failed. Please try again.", "error");
   }
 }
 
@@ -101,9 +104,10 @@ function handleUnregister(button, event) {
     button.textContent = "Register";
     event.spotsLeft++;
     updateSpotsLeft(button, event.spotsLeft);
-    console.log("You are out!");
+
+    notification.showToast("Unregistered successfully", "success");
   } else {
-    console.log("Something failed during your cancellation.");
+    notification.showToast("Cancellation failed. Please try again.", "error");
   }
 }
 
